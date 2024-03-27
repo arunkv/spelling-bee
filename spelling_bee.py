@@ -47,7 +47,7 @@ if __name__ == '__main__':
                    if center_letter_set.issubset(word)
                    and set(word).issubset(letters_set)
                    and len(word) >= args.min]
-    words = sorted(valid_words, key=len, reverse=True)
+    words = sorted(valid_words)
     pangrams = [word for word in words if set(word) == letters_set]
     print(f'Total words: {len(words)}')
     print(f'Pangrams: {pangrams}')
