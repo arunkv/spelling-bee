@@ -4,15 +4,15 @@ Generates all words for the New York Times [Spelling Bee](https://www.nytimes.co
 
 ## Usage
 
-`spelling_bee.py [-h] -c CENTER -o OTHER [-m MIN] -d DICT`
+`spelling_bee.py [-h] -c CENTER -o OTHER [-m MIN] -d DICT [DICT ...]`
 
 Options:
 ```
-  -h, --help                 show this help message and exit
-  -c CENTER, --center CENTER Center letter
-  -o OTHER, --other OTHER    Other letters
-  -m MIN, --min MIN          Minimum word length
-  -d DICT, --dict DICT       Dictionary file
+  -h, --help                                 Help
+  -c CENTER, --center CENTER                 Center letter
+  -o OTHER, --other OTHER                    Other letters
+  -m MIN, --min MIN                          Minimum word length
+  -d DICT [DICT ...], --dict DICT [DICT ...] Dictionary files
 ```
 
 ## Example
