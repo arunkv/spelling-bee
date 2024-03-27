@@ -25,18 +25,20 @@ def parse_arguments():
     parser.add_argument('-c', '--center', type=str, required=True, help='Center letter')
     parser.add_argument('-o', '--other', type=str, required=True, help='Other letters')
     parser.add_argument('-m', '--min', type=int, default=4, help='Minimum word length')
-    parser.add_argument('-d', '--dict', type=str, required=True, help='Dictionary file')
+    parser.add_argument('-d', '--dict', type=str, required=True, nargs='+',
+                        help='Dictionary files')
     return parser.parse_args()
 
 
 if __name__ == '__main__':
     args = parse_arguments()
-    try:
-        with open(args.dict, 'r', encoding='utf-8') as file:
-            word_list = [line.strip() for line in file]
-    except FileNotFoundError:
-        print(f"File {args.dict} not found.")
-        word_list = []
+    word_list = set()
+    for word_file in args.dict:
+        try:
+            with open(word_file, 'r', encoding='utf-8') as file:
+                word_list = word_list.union([line.strip() for line in file])
+        except FileNotFoundError:
+            print(f"File {word_file} not found.")
 
     all_letters = set(args.center.lower()).union(set(args.other.lower()))
     words = sorted([word for word in word_list
